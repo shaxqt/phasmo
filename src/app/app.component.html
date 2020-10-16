@@ -1,1 +1,8 @@
-<h1>hi</h1>
+<div class="content-wrapper">
+  <main>
+    <app-evidence-selector
+      [evidenceStates]="evidenceStates"
+      (evidenceStatesChanged)="evidenceStatesChanged($event)"
+    ></app-evidence-selector>
+  </main>
+</div>
