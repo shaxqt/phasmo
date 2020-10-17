@@ -11,16 +11,15 @@ import { GHOSTS } from './game-data/GHOSTS';
 })
 export class AppComponent implements OnInit {
   evidenceStates: EvidenceStatus[];
-  ghosts: Ghost[];
+  allGhosts: Ghost[];
 
   ngOnInit(): void {
     this.evidenceStates = this.createEvidenceStates();
-    this.ghosts = GHOSTS;
+    this.allGhosts = GHOSTS;
   }
 
-  evidenceStatesChanged(updatedEvidenceStats: EvidenceStatus[]) {
+  evidenceStatesChanged(updatedEvidenceStats: EvidenceStatus[]): void {
     this.evidenceStates = updatedEvidenceStats;
-    console.log('updated', this.evidenceStates);
   }
 
   private createEvidenceStates(): EvidenceStatus[] {

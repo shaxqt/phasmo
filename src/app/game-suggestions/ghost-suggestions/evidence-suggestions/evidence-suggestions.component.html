@@ -1,0 +1,16 @@
+<ng-container *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
+  <p>try to prove</p>
+  <ul>
+    <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToProve">
+      {{ evidence }}
+    </li>
+  </ul>
+</ng-container>
+<ng-container *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
+  <p>try to exclude</p>
+  <ul>
+    <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToExclude">
+      {{ evidence }}
+    </li>
+  </ul>
+</ng-container>

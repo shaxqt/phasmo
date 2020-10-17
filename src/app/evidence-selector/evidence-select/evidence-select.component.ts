@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EvidenceStatus } from '../../game-data/evidence-status';
 import { Status } from '../../game-data/status';
 import { MatButtonToggleChange } from '@angular/material';
+import { Evidence } from '../../game-data/evidence';
 
 interface EvidenceSelectOption {
   key: string;
@@ -22,9 +23,12 @@ export class EvidenceSelectComponent implements OnInit {
     EvidenceStatus
   >();
 
+  name: string;
+
   evidenceSelectOptions: EvidenceSelectOption[];
 
   ngOnInit(): void {
+    this.name = Evidence[this.evidenceStatus.evidenceKey];
     this.evidenceSelectOptions = this.getEvidenceSelectOptions();
   }
 
