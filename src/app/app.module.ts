@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EvidenceSelectorModule } from './evidence-selector/evidence-selector.module';
-import { MatCardModule } from '@angular/material';
-import { GhostSuggestionsModule } from './game-suggestions/ghost-suggestions/ghost-suggestions.module';
+import { GameSuggestionsModule } from './game-suggestions/game-suggestions.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +14,7 @@ import { GhostSuggestionsModule } from './game-suggestions/ghost-suggestions/gho
     AppRoutingModule,
     BrowserAnimationsModule,
     EvidenceSelectorModule,
-    GhostSuggestionsModule,
-    MatCardModule,
+    GameSuggestionsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

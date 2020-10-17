@@ -1,0 +1,16 @@
+<mat-card>
+  <ng-container *ngIf="suggestedGhosts.length === 0; else suggestions">
+    <h2>no ghosts left</h2>
+    <button mat-raised-button color="accent" (click)="resetEvidenceStates.emit()">reset</button>
+  </ng-container>
+</mat-card>
+
+<ng-template #suggestions>
+  <app-ghost-suggestions
+    [suggestedGhosts]="suggestedGhosts"
+  ></app-ghost-suggestions>
+  <app-evidence-suggestions
+    [ghosts]="suggestedGhosts"
+    [evidenceStates]="evidenceStates"
+  ></app-evidence-suggestions>
+</ng-template>

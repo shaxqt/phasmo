@@ -1,13 +1,13 @@
 <ng-container *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
-  <p>try to prove</p>
+  <h3>try to prove</h3>
   <ul>
     <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToProve">
       {{ evidence }}
     </li>
   </ul>
 </ng-container>
-<ng-container *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
-  <p>try to exclude</p>
+<ng-container *ngIf="suggestedEvidences.evidenceKeysToExclude.length > 0">
+  <h3>try to exclude</h3>
   <ul>
     <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToExclude">
       {{ evidence }}

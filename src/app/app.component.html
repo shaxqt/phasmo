@@ -1,34 +1,13 @@
 <div class="content-wrapper">
   <main>
-    <mat-card>
-      <app-evidence-selector
-        [evidenceStates]="evidenceStates"
-        (evidenceStatesChanged)="evidenceStatesChanged($event)"
-      ></app-evidence-selector>
-    </mat-card>
-    <mat-card>
-      <app-ghost-suggestions
-        [allGhosts]="allGhosts"
-        [evidenceStates]="evidenceStates"
-      ></app-ghost-suggestions>
-    </mat-card>
-    <mat-card>
-      <app-ghost-suggestions
-        [allGhosts]="allGhosts"
-        [evidenceStates]="evidenceStates"
-      ></app-ghost-suggestions>
-    </mat-card>
-    <mat-card>
-      <app-ghost-suggestions
-        [allGhosts]="allGhosts"
-        [evidenceStates]="evidenceStates"
-      ></app-ghost-suggestions>
-    </mat-card>
-    <mat-card>
-      <app-ghost-suggestions
-        [allGhosts]="allGhosts"
-        [evidenceStates]="evidenceStates"
-      ></app-ghost-suggestions>
-    </mat-card>
+    <app-evidence-selector
+      [evidenceStates]="evidenceStates"
+      (evidenceStatesChanged)="evidenceStatesChanged($event)"
+    ></app-evidence-selector>
+    <app-game-suggestions
+      [allGhosts]="allGhosts"
+      [evidenceStates]="evidenceStates"
+      (resetEvidenceStates)="onResetEvidenceStates()"
+    ></app-game-suggestions>
   </main>
 </div>

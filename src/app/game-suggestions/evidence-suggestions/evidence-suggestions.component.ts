@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Ghost } from '../../../game-data/ghost';
-import { EvidenceStatus } from '../../../game-data/evidence-status';
-import { Status } from '../../../game-data/status';
-import { Evidence } from '../../../game-data/evidence';
+import { Ghost } from '../../game-data/ghost';
+import { EvidenceStatus } from '../../game-data/evidence-status';
+import { Status } from '../../game-data/status';
+import { Evidence } from '../../game-data/evidence';
 
 interface SuggestedEvidences {
   evidenceKeysToExclude: string[];

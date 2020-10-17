@@ -1,2 +1,7 @@
-<app-ghost-suggestion *ngFor="let ghost of suggestedGhosts" [ghost]="ghost"></app-ghost-suggestion>
-<app-evidence-suggestions [ghosts]="suggestedGhosts" [evidenceStates]="evidenceStates"> </app-evidence-suggestions>
+<h2>possible ghosts</h2>
+<ul>
+  <app-ghost-suggestion
+    *ngFor="let ghost of suggestedGhosts"
+    [ghost]="ghost"
+  ></app-ghost-suggestion>
+</ul>

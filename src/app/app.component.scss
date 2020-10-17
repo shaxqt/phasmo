@@ -9,6 +9,9 @@
 
 main {
   padding: 20px 0;
+  display: grid;
+  align-content: start;
+  grid-gap: 15px;
 }
 
 mat-card {

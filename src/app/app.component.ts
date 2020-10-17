@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
     this.evidenceStates = updatedEvidenceStats;
   }
 
+  onResetEvidenceStates(): void {
+    this.evidenceStates = this.createEvidenceStates();
+  }
+
   private createEvidenceStates(): EvidenceStatus[] {
     return Object.keys(Evidence).map(
       (key) => ({ evidenceKey: key, statusKey: 'UNKNOWN' } as EvidenceStatus)
