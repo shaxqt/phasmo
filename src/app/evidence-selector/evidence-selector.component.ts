@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { EvidenceStatus } from '../game-data/evidence-status';
 
 @Component({
   selector: 'app-evidence-selector',
   templateUrl: './evidence-selector.component.html',
   styleUrls: ['./evidence-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EvidenceSelectorComponent {
   @Input()
