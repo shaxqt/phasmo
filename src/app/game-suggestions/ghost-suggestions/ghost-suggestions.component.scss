@@ -1,6 +1,8 @@
-/* ::ng-deep .mat-expansion-panel-header .mat-content {
-  align-items: center;
-} */
+@media (max-width: 365px) {
+  ::ng-deep .mat-expansion-panel-header .mat-content {
+    align-items: center;
+  }
+}
 .mat-expansion-panel-header-description {
   margin: 0;
   display: flex;
