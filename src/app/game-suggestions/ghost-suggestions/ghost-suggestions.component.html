@@ -11,6 +11,10 @@
         </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+    <mat-card-content>
+      <p>{{ ghost.desc }}</p>
+      <p><b>strength:</b> {{ ghost.strength }}</p>
+      <p><b>weakness:</b> {{ ghost.weakness }}</p>
+    </mat-card-content>
   </mat-expansion-panel>
 </mat-accordion>
