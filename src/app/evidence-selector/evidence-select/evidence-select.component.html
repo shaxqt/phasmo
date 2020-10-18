@@ -1,16 +1,19 @@
-<p>{{ this.name }}</p>
+<div class="flex-row">
+  <p>{{ evidence.name }}</p>
+  <mat-icon icon>{{ evidence.icon }}</mat-icon>
+</div>
 <div>
   <mat-button-toggle-group
-    *ngIf="evidenceStatus"
-    (change)="onEvidenceStatusChanged($event)"
+    *ngIf="evidence"
+    (change)="onEvidenceChanged($event)"
     name="fontStyle"
     aria-label="Font Style"
-    [value]="initialEvidenceStatusKey"
+    [value]="evidence.status"
   >
     <mat-button-toggle
       *ngFor="let option of evidenceSelectOptions"
-      [value]="option.key"
-      >{{ option.name }}</mat-button-toggle
+      [value]="option"
+      >{{ option }}</mat-button-toggle
     >
   </mat-button-toggle-group>
 </div>

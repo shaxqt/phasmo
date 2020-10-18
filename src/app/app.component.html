@@ -2,12 +2,12 @@
   <div class="content-wrapper">
     <main>
       <app-evidence-selector
-        [evidenceStates]="evidenceStates"
+        [evidences]="evidences"
         (evidenceStatesChanged)="evidenceStatesChanged($event)"
       ></app-evidence-selector>
       <app-game-suggestions
         [allGhosts]="allGhosts"
-        [evidenceStates]="evidenceStates"
+        [evidences]="evidences"
         (resetEvidenceStates)="onResetEvidenceStates()"
       ></app-game-suggestions>
     </main>

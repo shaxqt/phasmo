@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EvidenceSelectorModule } from './evidence-selector/evidence-selector.module';
 import { GameSuggestionsModule } from './game-suggestions/game-suggestions.module';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { GameSuggestionsModule } from './game-suggestions/game-suggestions.modul
     BrowserAnimationsModule,
     EvidenceSelectorModule,
     GameSuggestionsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

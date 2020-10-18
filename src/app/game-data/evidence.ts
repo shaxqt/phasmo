@@ -1,8 +1,9 @@
-export enum Evidence {
-    FINGERPRINT = 'Fingerprints',
-    ORB = 'Ghostorb',
-    BOOK = 'Ghostwriting',
-    FREEZE = 'Freezing temperatures',
-    EMF = 'EMF Level 5',
-    BOX = 'Ghostbox',
+import {EvidenceEnum} from './evidence-enum'
+import { Status } from './status';
+export interface Evidence {
+    type: EvidenceEnum;
+    name: string;
+    desc: string;
+    icon: string;
+    status?: Status;
 }

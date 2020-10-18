@@ -1,16 +1,14 @@
-<ng-container *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
-  <h3>try to prove</h3>
-  <ul>
-    <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToProve">
-      {{ evidence }}
-    </li>
-  </ul>
-</ng-container>
-<ng-container *ngIf="suggestedEvidences.evidenceKeysToExclude.length > 0">
-  <h3>try to exclude</h3>
-  <ul>
-    <li *ngFor="let evidence of suggestedEvidences.evidenceKeysToExclude">
-      {{ evidence }}
-    </li>
-  </ul>
-</ng-container>
+<mat-card *ngIf="suggestedEvidences.evidenceKeysToProve.length > 0">
+  <div>try to prove</div>
+  <mat-icon *ngFor="let evidence of suggestedEvidences.evidenceKeysToProve">{{
+    evidence.icon
+  }}</mat-icon>
+
+  <ng-container *ngIf="suggestedEvidences.evidenceKeysToExclude.length > 0">
+    <div>try to exlude</div>
+    <mat-icon
+      *ngFor="let evidence of suggestedEvidences.evidenceKeysToExclude"
+      >{{ evidence.icon }}</mat-icon
+    >
+  </ng-container>
+</mat-card>

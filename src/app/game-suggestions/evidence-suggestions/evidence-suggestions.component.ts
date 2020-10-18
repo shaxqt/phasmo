@@ -1,12 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Ghost } from '../../game-data/ghost';
-import { EvidenceStatus } from '../../game-data/evidence-status';
 import { Status } from '../../game-data/status';
 import { Evidence } from '../../game-data/evidence';
 
 interface SuggestedEvidences {
-  evidenceKeysToExclude: string[];
-  evidenceKeysToProve: string[];
+  evidenceKeysToExclude: Evidence[];
+  evidenceKeysToProve: Evidence[];
 }
 
 @Component({
@@ -16,7 +15,7 @@ interface SuggestedEvidences {
 })
 export class EvidenceSuggestionsComponent implements OnChanges {
   @Input()
-  evidenceStates: EvidenceStatus[];
+  evidences: Evidence[];
   @Input()
   ghosts: Ghost[];
   suggestedEvidences: SuggestedEvidences = {
@@ -35,29 +34,29 @@ export class EvidenceSuggestionsComponent implements OnChanges {
   }
 
   private getSuggestedEvidences(): SuggestedEvidences {
-    const unknownEvidences: EvidenceStatus[] = this.evidenceStates.filter(
-      (evidence: EvidenceStatus) =>
-        Status[evidence.statusKey] === Status.UNKNOWN
+    const unknownEvidences: Evidence[] = this.evidences.filter(
+      (evidence: Evidence) =>
+        evidence.status === Status.UNKNOWN
     );
 
-    let prove: string[] = [];
-    let exclude: string[] = [];
-    if (unknownEvidences.length !== this.evidenceStates.length) {
-      unknownEvidences.forEach((unknownEvidence: EvidenceStatus) => {
+    let prove: Evidence[] = [];
+    let exclude: Evidence[] = [];
+    if (unknownEvidences.length !== this.evidences.length) {
+      unknownEvidences.forEach((unknownEvidence: Evidence) => {
         let occurrenceCount = 0;
         this.ghosts.forEach((suggestedGhost: Ghost) => {
           if (
             suggestedGhost.neededEvidences.includes(
-              Evidence[unknownEvidence.evidenceKey]
+              unknownEvidence.type
             )
           ) {
             occurrenceCount++;
           }
         });
         if (occurrenceCount === 1) {
-          prove = [...prove, unknownEvidence.evidenceKey];
+          prove = [...prove, unknownEvidence];
         } else if (occurrenceCount > 1) {
-          exclude = [...exclude, unknownEvidence.evidenceKey];
+          exclude = [...exclude, unknownEvidence];
         }
       });
     }

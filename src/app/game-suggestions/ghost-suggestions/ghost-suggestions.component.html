@@ -7,7 +7,7 @@
       </mat-panel-title>
       <mat-panel-description>
         <div *ngFor="let neededEvidence of ghost.neededEvidences">
-          {{ neededEvidence }}
+          <mat-icon>{{ getEvidenceIcon(neededEvidence) }}</mat-icon>
         </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
