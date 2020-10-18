@@ -67,7 +67,7 @@ export const GHOSTS: Ghost[] = [
   },
   {
     name: 'Demon',
-    neededEvidences: [EvidenceEnum.BOOK, EvidenceEnum.BOOK, EvidenceEnum.FREEZE],
+    neededEvidences: [EvidenceEnum.BOX, EvidenceEnum.BOOK, EvidenceEnum.FREEZE],
     desc: `A Demon is one of the worst Ghosts you can encounter. It has been known to attack without a reason.`,
     strength: `Demons will attack more often than any other Ghost.`,
     weakness: `Asking a Demon successful questions on the Ouija Board won’t lower the users sanity.`,
