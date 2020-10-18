@@ -40,7 +40,7 @@ export class EvidenceSuggestionsComponent implements OnChanges {
     );
 
     let prove: Evidence[] = [];
-    let exclude: Evidence[] = [];
+    let exclude: {evidence: Evidence, count: number}[] = [];
     if (unknownEvidences.length !== this.evidences.length) {
       unknownEvidences.forEach((unknownEvidence: Evidence) => {
         let occurrenceCount = 0;
@@ -56,12 +56,15 @@ export class EvidenceSuggestionsComponent implements OnChanges {
         if (occurrenceCount === 1) {
           prove = [...prove, unknownEvidence];
         } else if (occurrenceCount > 1) {
-          exclude = [...exclude, unknownEvidence];
+          exclude = [...exclude, {evidence: unknownEvidence, count: occurrenceCount}];
         }
       });
     }
+    console.log(exclude)
+    const sortedExcludeEvidences = exclude.sort((a, b) => b.count - a.count).map(temp => temp.evidence)
+    console.log(sortedExcludeEvidences)
     return {
-      evidenceKeysToExclude: exclude,
+      evidenceKeysToExclude: sortedExcludeEvidences,
       evidenceKeysToProve: prove,
     };
   }
