@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { EvidenceStatus } from '../game-data/evidence-status';
+import { Evidence } from '../game-data/evidence';
+import { Status } from '../game-data/status';
 
 @Component({
   selector: 'app-evidence-selector',
@@ -9,22 +10,22 @@ import { EvidenceStatus } from '../game-data/evidence-status';
 })
 export class EvidenceSelectorComponent {
   @Input()
-  evidenceStates: EvidenceStatus[];
+  evidences: Evidence[];
 
   @Output()
-  evidenceStatesChanged: EventEmitter<EvidenceStatus[]> = new EventEmitter<
-    EvidenceStatus[]
+  evidenceStatesChanged: EventEmitter<Evidence[]> = new EventEmitter<
+    Evidence[]
   >();
 
   constructor() {}
 
-  onEvidenceStatesChanged(newEvidenceState: EvidenceStatus): void {
-    this.evidenceStates = this.evidenceStates.map(
-      (currentState: EvidenceStatus) =>
-        currentState.evidenceKey === newEvidenceState.evidenceKey
+  onEvidenceChanged(newEvidenceState: Evidence): void {
+     this.evidences = this.evidences.map(
+      (currentState: Evidence) =>
+        currentState.type === newEvidenceState.type
           ? newEvidenceState
           : currentState
     );
-    this.evidenceStatesChanged.emit(this.evidenceStates);
+    this.evidenceStatesChanged.emit(this.evidences);
   }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Evidence } from './game-data/evidence';
-import { EvidenceStatus } from './game-data/evidence-status';
 import { Ghost } from './game-data/ghost';
 import { GHOSTS } from './game-data/GHOSTS';
+import { EVIDENCES } from './game-data/EVIDENCES';
+import { Status } from './game-data/status';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +11,23 @@ import { GHOSTS } from './game-data/GHOSTS';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  evidenceStates: EvidenceStatus[];
+  evidences: Evidence[];
   allGhosts: Ghost[];
 
   ngOnInit(): void {
-    this.evidenceStates = this.createEvidenceStates();
+    this.evidences = this.createEvidenceStates();
     this.allGhosts = GHOSTS;
   }
 
-  evidenceStatesChanged(updatedEvidenceStats: EvidenceStatus[]): void {
-    this.evidenceStates = updatedEvidenceStats;
+  evidenceStatesChanged(updatedEvidences: Evidence[]): void {
+    this.evidences = updatedEvidences;
   }
 
   onResetEvidenceStates(): void {
-    this.evidenceStates = this.createEvidenceStates();
+    this.evidences = this.createEvidenceStates();
   }
 
-  private createEvidenceStates(): EvidenceStatus[] {
-    return Object.keys(Evidence).map(
-      (key) => ({ evidenceKey: key, statusKey: 'UNKNOWN' } as EvidenceStatus)
-    );
+  private createEvidenceStates(): Evidence[] {
+    return EVIDENCES.map(evidence => ({...evidence, status: Status.UNKNOWN}))
   }
 }

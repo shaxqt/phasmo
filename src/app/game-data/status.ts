@@ -1,5 +1,5 @@
 export enum Status {
   UNLIKELY = 'unlikely',
-  UNKNOWN = 'unkown',
+  UNKNOWN = 'unknown',
   PROVEN = 'proven',
 }

@@ -6,7 +6,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { EvidenceStatus } from '../game-data/evidence-status';
 import { Ghost } from '../game-data/ghost';
 import { Evidence } from '../game-data/evidence';
 import { Status } from '../game-data/status';
@@ -18,7 +17,7 @@ import { Status } from '../game-data/status';
 })
 export class GameSuggestionsComponent implements OnChanges {
   @Input()
-  evidenceStates: EvidenceStatus[];
+  evidences: Evidence[];
 
   @Input()
   allGhosts: Ghost[];
@@ -26,51 +25,56 @@ export class GameSuggestionsComponent implements OnChanges {
   @Output()
   resetEvidenceStates: EventEmitter<any> = new EventEmitter<any>();
 
-  suggestedGhosts: Ghost[];
+  suggestedGhosts: Ghost[] = [];
 
   constructor() {}
 
-  ngOnChanges({ evidenceStates, ghosts }: SimpleChanges): void {
-    if (evidenceStates || ghosts) {
+  ngOnChanges({ evidences, ghosts }: SimpleChanges): void {
+    if (evidences || ghosts) {
       this.suggestedGhosts = this.getSuggestedGhosts();
     }
   }
 
   private getSuggestedGhosts(): Ghost[] {
+    if(this.suggestedGhosts && this.evidences) {
     const provenGhosts = this.getProvenGhosts(
       this.allGhosts,
-      this.evidenceStates
+      this.evidences
     );
-    return this.getGhostsWithoutUnlikely(provenGhosts, this.evidenceStates);
+    return this.getGhostsWithoutUnlikely(provenGhosts, this.evidences);
+    }
+    return [];
   }
 
   private getProvenGhosts(
     ghosts: Ghost[],
-    evidenceStates: EvidenceStatus[]
+    evidences: Evidence[]
   ): Ghost[] {
-    const provenEvidences: EvidenceStatus[] = evidenceStates.filter(
-      (evidence: EvidenceStatus) => Status[evidence.statusKey] === Status.PROVEN
-    );
+    const provenEvidences = this.filterByStatus(evidences, Status.PROVEN)
     return ghosts.filter((ghost) =>
-      provenEvidences.every((provenEvidence: EvidenceStatus) =>
-        ghost.neededEvidences.includes(Evidence[provenEvidence.evidenceKey])
+      provenEvidences.every((provenEvidence: Evidence) =>
+        ghost.neededEvidences.includes(provenEvidence.type)
       )
     );
   }
 
   private getGhostsWithoutUnlikely(
     ghosts: Ghost[],
-    evidenceStates: EvidenceStatus[]
+    evidences: Evidence[]
   ): Ghost[] {
-    const unlikelyEvidences: EvidenceStatus[] = evidenceStates.filter(
-      (evidence: EvidenceStatus) =>
-        Status[evidence.statusKey] === Status.UNLIKELY
-    );
+    const unlikelyEvidences = this.filterByStatus(evidences, Status.UNLIKELY)
     return ghosts.filter(
       (ghost: Ghost) =>
-        !unlikelyEvidences.some((unlikelyEvidence: EvidenceStatus) =>
-          ghost.neededEvidences.includes(Evidence[unlikelyEvidence.evidenceKey])
+        !unlikelyEvidences.some((unlikelyEvidence: Evidence) =>
+          ghost.neededEvidences.includes(unlikelyEvidence.type)
         )
+    );
+  }
+
+  private filterByStatus(evidences: Evidence[], status: Status): Evidence[] {
+    return evidences.filter(
+      (evidence: Evidence) =>
+       evidence.status === status
     );
   }
 }

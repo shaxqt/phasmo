@@ -1,7 +1,7 @@
 <mat-card>
   <app-evidence-select
-    *ngFor="let evidenceStatus of evidenceStates"
-    [evidenceStatus]="evidenceStatus"
-    (evidenceStatusChanged)="onEvidenceStatesChanged($event)"
+    *ngFor="let evidence of evidences"
+    [evidence]="evidence"
+    (evidenceChanged)="onEvidenceChanged($event)"
   ></app-evidence-select>
 </mat-card>
