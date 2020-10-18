@@ -1,0 +1,10 @@
+.mat-expansion-panel-header-description {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  flex-wrap: wrap;
+  div:not(:first-child) {
+    padding-left: 3px;
+  }
+}

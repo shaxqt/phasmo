@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 10px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.mat-button-toogle-group {
+  min-width: 50px;
+}
