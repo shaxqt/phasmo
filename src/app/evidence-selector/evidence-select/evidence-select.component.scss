@@ -1,15 +1,16 @@
 :host {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+
+  @media (min-width: 365px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   padding-bottom: 10px;
 
   &:last-child {
     padding-bottom: 0;
   }
-}
-
-.mat-button-toogle-group {
-  min-width: 50px;
 }

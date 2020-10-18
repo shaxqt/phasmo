@@ -1,13 +1,15 @@
-<div class="content-wrapper">
-  <main>
-    <app-evidence-selector
-      [evidenceStates]="evidenceStates"
-      (evidenceStatesChanged)="evidenceStatesChanged($event)"
-    ></app-evidence-selector>
-    <app-game-suggestions
-      [allGhosts]="allGhosts"
-      [evidenceStates]="evidenceStates"
-      (resetEvidenceStates)="onResetEvidenceStates()"
-    ></app-game-suggestions>
-  </main>
+<div class="viewport-scroll">
+  <div class="content-wrapper">
+    <main>
+      <app-evidence-selector
+        [evidenceStates]="evidenceStates"
+        (evidenceStatesChanged)="evidenceStatesChanged($event)"
+      ></app-evidence-selector>
+      <app-game-suggestions
+        [allGhosts]="allGhosts"
+        [evidenceStates]="evidenceStates"
+        (resetEvidenceStates)="onResetEvidenceStates()"
+      ></app-game-suggestions>
+    </main>
+  </div>
 </div>
